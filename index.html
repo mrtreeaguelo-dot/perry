@@ -3075,8 +3075,17 @@
     
     /* 3. Ajustes específicos de responsividad general */
     @media (max-width: 768px) {
+      .promo-banner {
+        display: none !important;
+      }
+      
       nav {
         padding: 0 20px !important;
+        top: 0 !important;
+      }
+      
+      .hero {
+        padding-top: 72px !important;
       }
       
       .nav-links {
@@ -3185,7 +3194,7 @@
       /* Cabecera y Hero Compacto */
       .hero {
         min-height: auto !important;
-        padding-top: 112px !important;
+        padding-top: 72px !important;
       }
       
       .hero-h1 {
@@ -4632,47 +4641,48 @@
     </div>
   </section>
 
-  <!-- BORN IN ZARAGOZA HISTORY -->
-  <section class="about-section animate-up" id="nosotros">
-    <div class="about-visual" style="position: relative;">
-      <div class="about-img-wrapper">
-        <img class="about-img" src="https://img1.wsimg.com/isteam/ip/6e2a5762-467f-4f7c-b7de-97ee0216cf58/perfil%202.JPG" alt="Miguel Ángel Ruiz de Conejo - TakoyakiBlog" loading="lazy">
-        <div class="about-badge">
-          <span class="percent">95%</span>
-          <span class="label">Clientes<br>Felices</span>
+  <!-- UBICACIÓN & LIVE MAP -->
+  <section class="location-section" id="ubicacion">
+    <div class="location-info animate-up">
+      <div class="section-label">Encuéntranos</div>
+      <h2 class="section-title">Nuestras Ubicaciones</h2>
+      
+      <!-- Location Selector Tabs -->
+      <div class="location-tabs" style="margin-top: 20px;">
+        <button class="location-tab-btn active" onclick="switchLocation('romareda')">Romareda (Original)</button>
+        <button class="location-tab-btn" onclick="switchLocation('actur')">Actur (¡Nuevo Local!)</button>
+      </div>
+      
+      <div class="info-list" style="margin-top: 24px; margin-bottom: 24px;">
+        <!-- Address -->
+        <div class="info-item">
+          <span class="info-label" id="location-name-label">Perrazos Romareda</span>
+          <span class="info-value" id="location-address-val">Calle Manuel Serrano Sanz 5, 50009 Zaragoza</span>
+          <small id="location-description-val">Zona Universitaria · Plaza San Francisco · Junto al estadio de La Romareda</small>
         </div>
-      </div>
-      <!-- Floating brand mascot retro sticker badge -->
-      <div class="about-mascot-wrapper" style="position: absolute; bottom: -20px; left: 10px; width: 140px; background: #FFFFFF; padding: 10px; border-radius: var(--radius-md); box-shadow: 0 10px 25px rgba(0,0,0,0.12); border: 2px dashed var(--red-primary); transform: rotate(-6deg); z-index: 6; display: flex; flex-direction: column; align-items: center; gap: 4px;">
-        <img src="logo-perrazos.png" alt="Mascota Perrazos Oficial" style="width: 100%; height: auto; border-radius: 4px;">
-        <span style="font-family: var(--font-headings); font-size: 0.6rem; font-weight: 800; text-transform: uppercase; color: var(--red-primary); letter-spacing: 0.05em; text-align: center; display: block; margin-top: 4px;">Est. 2024 · Zaragoza</span>
-      </div>
-    </div>
-    
-    <div class="about-text">
-      <div class="section-label">Nuestra Historia</div>
-      <h2 class="section-title">Born In Zaragoza</h2>
-      <p>Creado por Miguel Ángel Ruiz de Conejo, el reconocido influencer gastronómico aragonés detrás de <strong>TakoyakiBlog</strong>, PERRAZOS nace con el objetivo de elevar el concepto clásico de los perritos calientes callejeros a una categoría gourmet irresistible.</p>
-      <p>Desde la exitosa apertura de nuestro primer establecimiento en abril de 2024, nos hemos dedicado a ofrecer combinaciones de autor sorprendentes elaboradas con ingredientes selectos a precios asequibles para universitarios y familias por igual, justo al lado de La Romareda.</p>
 
-      <div class="about-feats">
-        <div class="feat-card">
-          <h4>Salsas de Autor</h4>
-          <p>Fórmulas secretas exclusivas creadas para potenciar cada bocado.</p>
-        </div>
-        <div class="feat-card">
-          <h4>Calidad de Origen</h4>
-          <p>Auténticas salchichas bockwurst ahumadas y pan potato roll.</p>
-        </div>
-        <div class="feat-card">
-          <h4>Precio Honesto</h4>
-          <p>Comida rápida artesanal con menús combinados muy competitivos.</p>
-        </div>
-        <div class="feat-card">
-          <h4>Urban Concept</h4>
-          <p>Servicio enfocado a llevar, fresco, moderno y con raíces locales.</p>
+        <!-- Hours -->
+        <div class="info-item">
+          <span class="info-label">Horario Completo</span>
+          <div class="hours-table">
+            <div class="hours-row">
+              <span>Lunes a Domingo</span>
+              <span>12:30 - 15:30 / 19:45 - 23:00</span>
+            </div>
+          </div>
+          <div class="live-status-badge" id="location-live-badge" style="margin-top: 14px; margin-bottom: 0;">
+            <span class="status-dot closed"></span>
+            <span>Consultando estado...</span>
+          </div>
         </div>
       </div>
+
+      <a href="https://maps.google.com/?q=Perrazos+Calle+Manuel+Serrano+Sanz+5+Zaragoza" id="location-directions-btn" target="_blank" class="btn-directions">Cómo Llegar</a>
+    </div>
+
+    <div class="location-map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1482!2d-0.897556!3d41.639061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd59155401173493%3A0xb9568c7a6c99d779!2sPerrazos!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de ubicación de Perrazos Zaragoza"></iframe>
+      <div class="map-overlay-veil"></div>
     </div>
   </section>
 
@@ -4795,48 +4805,47 @@
     </div>
   </section>
 
-  <!-- UBICACIÓN & LIVE MAP -->
-  <section class="location-section" id="ubicacion">
-    <div class="location-info animate-up">
-      <div class="section-label">Encuéntranos</div>
-      <h2 class="section-title">Nuestras Ubicaciones</h2>
-      
-      <!-- Location Selector Tabs -->
-      <div class="location-tabs" style="margin-top: 20px;">
-        <button class="location-tab-btn active" onclick="switchLocation('romareda')">Romareda (Original)</button>
-        <button class="location-tab-btn" onclick="switchLocation('actur')">Actur (¡Nuevo Local!)</button>
-      </div>
-      
-      <div class="info-list" style="margin-top: 24px; margin-bottom: 24px;">
-        <!-- Address -->
-        <div class="info-item">
-          <span class="info-label" id="location-name-label">Perrazos Romareda</span>
-          <span class="info-value" id="location-address-val">Calle Manuel Serrano Sanz 5, 50009 Zaragoza</span>
-          <small id="location-description-val">Zona Universitaria · Plaza San Francisco · Junto al estadio de La Romareda</small>
-        </div>
-
-        <!-- Hours -->
-        <div class="info-item">
-          <span class="info-label">Horario Completo</span>
-          <div class="hours-table">
-            <div class="hours-row">
-              <span>Lunes a Domingo</span>
-              <span>12:30 - 15:30 / 19:45 - 23:00</span>
-            </div>
-          </div>
-          <div class="live-status-badge" id="location-live-badge" style="margin-top: 14px; margin-bottom: 0;">
-            <span class="status-dot closed"></span>
-            <span>Consultando estado...</span>
-          </div>
+  <!-- BORN IN ZARAGOZA HISTORY -->
+  <section class="about-section animate-up" id="nosotros">
+    <div class="about-visual" style="position: relative;">
+      <div class="about-img-wrapper">
+        <img class="about-img" src="https://img1.wsimg.com/isteam/ip/6e2a5762-467f-4f7c-b7de-97ee0216cf58/perfil%202.JPG" alt="Miguel Ángel Ruiz de Conejo - TakoyakiBlog" loading="lazy">
+        <div class="about-badge">
+          <span class="percent">95%</span>
+          <span class="label">Clientes<br>Felices</span>
         </div>
       </div>
-
-      <a href="https://maps.google.com/?q=Perrazos+Calle+Manuel+Serrano+Sanz+5+Zaragoza" id="location-directions-btn" target="_blank" class="btn-directions">Cómo Llegar</a>
+      <!-- Floating brand mascot retro sticker badge -->
+      <div class="about-mascot-wrapper" style="position: absolute; bottom: -20px; left: 10px; width: 140px; background: #FFFFFF; padding: 10px; border-radius: var(--radius-md); box-shadow: 0 10px 25px rgba(0,0,0,0.12); border: 2px dashed var(--red-primary); transform: rotate(-6deg); z-index: 6; display: flex; flex-direction: column; align-items: center; gap: 4px;">
+        <img src="logo-perrazos.png" alt="Mascota Perrazos Oficial" style="width: 100%; height: auto; border-radius: 4px;">
+        <span style="font-family: var(--font-headings); font-size: 0.6rem; font-weight: 800; text-transform: uppercase; color: var(--red-primary); letter-spacing: 0.05em; text-align: center; display: block; margin-top: 4px;">Est. 2024 · Zaragoza</span>
+      </div>
     </div>
+    
+    <div class="about-text">
+      <div class="section-label">Nuestra Historia</div>
+      <h2 class="section-title">Born In Zaragoza</h2>
+      <p>Creado por Miguel Ángel Ruiz de Conejo, el reconocido influencer gastronómico aragonés detrás de <strong>TakoyakiBlog</strong>, PERRAZOS nace con el objetivo de elevar el concepto clásico de los perritos calientes callejeros a una categoría gourmet irresistible.</p>
+      <p>Desde la exitosa apertura de nuestro primer establecimiento en abril de 2024, nos hemos dedicado a ofrecer combinaciones de autor sorprendentes elaboradas con ingredientes selectos a precios asequibles para universitarios y familias por igual, justo al lado de La Romareda.</p>
 
-    <div class="location-map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1482!2d-0.897556!3d41.639061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd59155401173493%3A0xb9568c7a6c99d779!2sPerrazos!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de ubicación de Perrazos Zaragoza"></iframe>
-      <div class="map-overlay-veil"></div>
+      <div class="about-feats">
+        <div class="feat-card">
+          <h4>Salsas de Autor</h4>
+          <p>Fórmulas secretas exclusivas creadas para potenciar cada bocado.</p>
+        </div>
+        <div class="feat-card">
+          <h4>Calidad de Origen</h4>
+          <p>Auténticas salchichas bockwurst ahumadas y pan potato roll.</p>
+        </div>
+        <div class="feat-card">
+          <h4>Precio Honesto</h4>
+          <p>Comida rápida artesanal con menús combinados muy competitivos.</p>
+        </div>
+        <div class="feat-card">
+          <h4>Urban Concept</h4>
+          <p>Servicio enfocado a llevar, fresco, moderno y con raíces locales.</p>
+        </div>
+      </div>
     </div>
   </section>
 
