@@ -42,6 +42,11 @@
       box-sizing: border-box;
     }
 
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+    }
+
     html {
       scroll-behavior: smooth;
     }
@@ -50,7 +55,6 @@
       font-family: var(--font-body);
       background: var(--light-bg);
       color: var(--text-light);
-      overflow-x: hidden;
       line-height: 1.6;
     }
 
@@ -1974,14 +1978,16 @@
       border-left: 1px solid var(--dark-border);
       box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
       z-index: 400;
-      transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
       color: var(--text-dark);
+      visibility: hidden;
     }
 
     .cart-drawer.open {
       right: 0;
+      visibility: visible;
     }
 
     .cart-drawer-header {
@@ -2953,12 +2959,14 @@
       justify-content: center;
       gap: 40px;
       transform: translateY(-100%);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       padding: 80px 24px 40px;
+      visibility: hidden;
     }
     
     .mobile-menu-drawer.open {
       transform: translateY(0);
+      visibility: visible;
     }
     
     .mobile-nav-links {
@@ -3106,6 +3114,21 @@
         margin: 0 auto !important;
       }
       
+      .hero-photo-tag {
+        bottom: 12px !important;
+        left: 12px !important;
+        padding: 6px 10px !important;
+        border-radius: 6px !important;
+      }
+      
+      .hero-photo-tag p {
+        font-size: 0.65rem !important;
+      }
+      
+      .hero-photo-tag span {
+        font-size: 0.5rem !important;
+      }
+      
       .hero-floating-mascot {
         width: 70px !important;
         height: 70px !important;
@@ -3239,6 +3262,37 @@
       
       .combo-builder-steps {
         gap: 20px !important;
+      }
+      
+      /* Ocultar las cuadrículas de perritos y dulces en móvil */
+      .combo-step:nth-child(1) .combo-options-grid,
+      #combo-step-dulce .combo-options-grid,
+      #combo-step-duo .combo-options-grid {
+        display: none !important;
+      }
+      
+      /* Mostrar y estilizar selectores desplegables en móvil */
+      .combo-mobile-select-wrapper {
+        display: block !important;
+        width: 100%;
+        margin-top: 4px;
+      }
+      
+      .combo-mobile-select {
+        width: 100%;
+        padding: 12px 16px;
+        font-family: var(--font-body);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-radius: 8px;
+        border: 1.5px solid var(--red-primary);
+        background: #141212;
+        color: #ffffff;
+        cursor: pointer;
+        outline: none;
+        transition: var(--transition-smooth);
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+        text-transform: uppercase;
       }
       
       .combo-options-grid {
@@ -4165,6 +4219,20 @@
               <label for="cp-ny" class="combo-option-label">New York Bacon (9,90€)</label>
             </div>
           </div>
+          <!-- Selector desplegable premium exclusivo para móvil -->
+          <div class="combo-mobile-select-wrapper" style="display: none;">
+            <select id="mobile-perrazo-select" onchange="syncMobileSelectToRadio(this, 'combo-perrazo')" class="combo-mobile-select">
+              <option value="Classic" selected>Classic (8,90€)</option>
+              <option value="American Basics">American Basics (8,90€)</option>
+              <option value="Bacon Gold">Bacon Gold (8,90€)</option>
+              <option value="Truffle God">Truffle God (8,90€)</option>
+              <option value="Loves Emily">Loves Emily (8,90€)</option>
+              <option value="BBQ Beast">BBQ Beast (8,90€)</option>
+              <option value="Holy Cheese">Holy Cheese (9,90€)</option>
+              <option value="Carbonara Bomb">Carbonara Bomb (9,90€)</option>
+              <option value="New York Bacon">New York Bacon (9,90€)</option>
+            </select>
+          </div>
         </div>
 
         <!-- Step 2: Dulce (Sweet Menu only) -->
@@ -4186,6 +4254,14 @@
               <input type="radio" name="combo-dulce" id="cd-lotus" value="Lotus" onchange="updateComboSummary()">
               <label for="cd-lotus" class="combo-option-label">Lotus</label>
             </div>
+          </div>
+          <!-- Selector desplegable premium exclusivo para móvil -->
+          <div class="combo-mobile-select-wrapper" style="display: none;">
+            <select id="mobile-dulce-select" onchange="syncMobileSelectToRadio(this, 'combo-dulce')" class="combo-mobile-select">
+              <option value="Nutella" selected>Nutella</option>
+              <option value="Pistacho">Pistacho</option>
+              <option value="Lotus">Lotus</option>
+            </select>
           </div>
         </div>
 
@@ -4247,6 +4323,20 @@
               <input type="radio" name="combo-perrazo2" id="cp2-ny" value="New York Bacon" data-price-group2="9.90" onchange="updateComboSummary()">
               <label for="cp2-ny" class="combo-option-label">New York Bacon (9,90€)</label>
             </div>
+          </div>
+          <!-- Selector desplegable premium exclusivo para móvil -->
+          <div class="combo-mobile-select-wrapper" style="display: none;">
+            <select id="mobile-perrazo2-select" onchange="syncMobileSelectToRadio(this, 'combo-perrazo2')" class="combo-mobile-select">
+              <option value="Classic" selected>Classic (8,90€)</option>
+              <option value="American Basics">American Basics (8,90€)</option>
+              <option value="Bacon Gold">Bacon Gold (8,90€)</option>
+              <option value="Truffle God">Truffle God (8,90€)</option>
+              <option value="Loves Emily">Loves Emily (8,90€)</option>
+              <option value="BBQ Beast">BBQ Beast (8,90€)</option>
+              <option value="Holy Cheese">Holy Cheese (9,90€)</option>
+              <option value="Carbonara Bomb">Carbonara Bomb (9,90€)</option>
+              <option value="New York Bacon">New York Bacon (9,90€)</option>
+            </select>
           </div>
         </div>
 
@@ -5245,6 +5335,34 @@
       const orderBtn = document.querySelector('.btn-combo-order');
       if (orderBtn) {
         orderBtn.textContent = `Añadir Menú ${currentComboType.charAt(0).toUpperCase() + currentComboType.slice(1)} 🛒`;
+      }
+
+      // Sincronizar hacia los selectores desplegables móviles
+      const mobilePerritoSelect = document.getElementById('mobile-perrazo-select');
+      if (mobilePerritoSelect && selectedPerrazoRadio) {
+        mobilePerritoSelect.value = selectedPerrazoRadio.value;
+      }
+      
+      const selectedDulceRadio = document.querySelector('input[name="combo-dulce"]:checked');
+      const mobileDulceSelect = document.getElementById('mobile-dulce-select');
+      if (mobileDulceSelect && selectedDulceRadio) {
+        mobileDulceSelect.value = selectedDulceRadio.value;
+      }
+      
+      const selectedPerrazo2Radio = document.querySelector('input[name="combo-perrazo2"]:checked');
+      const mobilePerrito2Select = document.getElementById('mobile-perrazo2-select');
+      if (mobilePerrito2Select && selectedPerrazo2Radio) {
+        mobilePerrito2Select.value = selectedPerrazo2Radio.value;
+      }
+    }
+
+    // Sincroniza los selectores desplegables móviles con los radio buttons correspondientes
+    function syncMobileSelectToRadio(selectElement, radioName) {
+      const selectedValue = selectElement.value;
+      const radio = document.querySelector(`input[name="${radioName}"][value="${selectedValue}"]`);
+      if (radio) {
+        radio.checked = true;
+        updateComboSummary();
       }
     }
 
