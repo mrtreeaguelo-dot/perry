@@ -901,6 +901,51 @@
       justify-content: center;
     }
 
+    /* PREMIUM SELECT COMPONENT */
+    .premium-select {
+      display: block;
+      width: 100%;
+      padding: 12px 40px 12px 16px;
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: 8px;
+      border: 1.5px solid var(--red-primary);
+      background-color: #141212;
+      color: #ffffff;
+      cursor: pointer;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23F59E0B' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-size: 14px;
+      transition: var(--transition-smooth);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .premium-select:hover {
+      border-color: var(--gold-accent);
+      background-color: #1a1818;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15), inset 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .premium-select:focus {
+      border-color: var(--gold-accent);
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.45), inset 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .premium-select option {
+      background-color: #141212;
+      color: #ffffff;
+      font-weight: 600;
+      padding: 12px;
+    }
+
     /* INTERACTIVE COMBO BUILDER */
     .combo-section {
       background: var(--dark-bg);
@@ -3278,23 +3323,6 @@
         margin-top: 4px;
       }
       
-      .combo-mobile-select {
-        width: 100%;
-        padding: 12px 16px;
-        font-family: var(--font-body);
-        font-size: 0.85rem;
-        font-weight: 700;
-        border-radius: 8px;
-        border: 1.5px solid var(--red-primary);
-        background: #141212;
-        color: #ffffff;
-        cursor: pointer;
-        outline: none;
-        transition: var(--transition-smooth);
-        box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
-        text-transform: uppercase;
-      }
-      
       .combo-options-grid {
         gap: 8px !important;
       }
@@ -4089,7 +4117,7 @@
               <!-- Refresco Direct Selection Dropdown -->
               <div style="margin-top: 12px; margin-bottom: 4px; display: flex; flex-direction: column; gap: 6px; height: 58px;">
                 <label for="direct-refresco-select" style="font-family: var(--font-headings); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.02em;">Elige tu Refresco:</label>
-                <select id="direct-refresco-select" onchange="updateDirectRefrescoImage()" style="width: 100%; padding: 10px 14px; font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; border-radius: 6px; border: 1.5px solid var(--red-primary); background: var(--light-surface); color: var(--text-light); cursor: pointer; outline: none; transition: var(--transition-smooth); box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);">
+                <select id="direct-refresco-select" onchange="updateDirectRefrescoImage()" class="premium-select">
                   <option value="Coca-Cola">Coca-Cola (500ml)</option>
                   <option value="Coca-Cola Zero" selected>Coca-Cola Zero (500ml)</option>
                   <option value="Fanta Naranja">Fanta Naranja (500ml)</option>
@@ -4128,7 +4156,7 @@
               <!-- Cerveza Direct Selection Dropdown -->
               <div style="margin-top: 12px; margin-bottom: 4px; display: flex; flex-direction: column; gap: 6px; height: 58px;">
                 <label for="direct-cerveza-select" style="font-family: var(--font-headings); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.02em;">Elige tu Cerveza:</label>
-                <select id="direct-cerveza-select" onchange="updateDirectCervezaImage()" style="width: 100%; padding: 10px 14px; font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; border-radius: 6px; border: 1.5px solid var(--red-primary); background: var(--light-surface); color: var(--text-light); cursor: pointer; outline: none; transition: var(--transition-smooth); box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);">
+                <select id="direct-cerveza-select" onchange="updateDirectCervezaImage()" class="premium-select">
                   <option value="Ámbar Especial" selected>Ámbar Especial (330ml)</option>
                   <option value="Radler de Limón">Ámbar Radler de Limón (330ml)</option>
                   <option value="Triple Zero">Ámbar Triple Zero (330ml)</option>
@@ -4221,7 +4249,7 @@
           </div>
           <!-- Selector desplegable premium exclusivo para móvil -->
           <div class="combo-mobile-select-wrapper" style="display: none;">
-            <select id="mobile-perrazo-select" onchange="syncMobileSelectToRadio(this, 'combo-perrazo')" class="combo-mobile-select">
+            <select id="mobile-perrazo-select" onchange="syncMobileSelectToRadio(this, 'combo-perrazo')" class="premium-select">
               <option value="Classic" selected>Classic (8,90€)</option>
               <option value="American Basics">American Basics (8,90€)</option>
               <option value="Bacon Gold">Bacon Gold (8,90€)</option>
@@ -4257,7 +4285,7 @@
           </div>
           <!-- Selector desplegable premium exclusivo para móvil -->
           <div class="combo-mobile-select-wrapper" style="display: none;">
-            <select id="mobile-dulce-select" onchange="syncMobileSelectToRadio(this, 'combo-dulce')" class="combo-mobile-select">
+            <select id="mobile-dulce-select" onchange="syncMobileSelectToRadio(this, 'combo-dulce')" class="premium-select">
               <option value="Nutella" selected>Nutella</option>
               <option value="Pistacho">Pistacho</option>
               <option value="Lotus">Lotus</option>
@@ -4326,7 +4354,7 @@
           </div>
           <!-- Selector desplegable premium exclusivo para móvil -->
           <div class="combo-mobile-select-wrapper" style="display: none;">
-            <select id="mobile-perrazo2-select" onchange="syncMobileSelectToRadio(this, 'combo-perrazo2')" class="combo-mobile-select">
+            <select id="mobile-perrazo2-select" onchange="syncMobileSelectToRadio(this, 'combo-perrazo2')" class="premium-select">
               <option value="Classic" selected>Classic (8,90€)</option>
               <option value="American Basics">American Basics (8,90€)</option>
               <option value="Bacon Gold">Bacon Gold (8,90€)</option>
@@ -4365,7 +4393,7 @@
                     </div>
                     
                     <!-- Specific Soft Drink Dropdown Select -->
-                    <select id="refresco-select" onchange="updateComboSummary()" style="display: block; width: calc(100% - 10px); margin-left: 10px; padding: 10px 14px; font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; border-radius: 6px; border: 1.5px solid var(--red-primary); background: #1a1919; color: #ffffff; cursor: pointer; outline: none; transition: var(--transition-smooth); box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);">
+                    <select id="refresco-select" onchange="updateComboSummary()" class="premium-select" style="display: block; width: calc(100% - 10px); margin-left: 10px;">
                       <option value="Coca-Cola" style="background-color: #1a1919; color: #ffffff;">Coca-Cola (500ml)</option>
                       <option value="Coca-Cola Zero" selected style="background-color: #1a1919; color: #ffffff;">Coca-Cola Zero (500ml)</option>
                       <option value="Fanta Naranja" style="background-color: #1a1919; color: #ffffff;">Fanta Naranja (500ml)</option>
@@ -4384,7 +4412,7 @@
                     </div>
                     
                     <!-- Specific Beer Dropdown Select -->
-                    <select id="cerveza-select" onchange="updateComboSummary()" style="display: none; width: calc(100% - 10px); margin-left: 10px; padding: 10px 14px; font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; border-radius: 6px; border: 1.5px solid var(--red-primary); background: #1a1919; color: #ffffff; cursor: pointer; outline: none; transition: var(--transition-smooth); box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);">
+                    <select id="cerveza-select" onchange="updateComboSummary()" class="premium-select" style="display: none; width: calc(100% - 10px); margin-left: 10px;">
                       <option value="Ámbar Especial (Tercio 33cl)" selected style="background-color: #1a1919; color: #ffffff;">Ámbar Especial (Tercio 330ml)</option>
                       <option value="Ámbar Radler (Tercio 33cl)" style="background-color: #1a1919; color: #ffffff;">Ámbar Radler con Limón (Tercio 330ml)</option>
                       <option value="Ámbar 0.0 (Tercio 33cl)" style="background-color: #1a1919; color: #ffffff;">Ámbar 0.0 Sin Alcohol (Tercio 330ml)</option>
@@ -4422,7 +4450,7 @@
               <!-- Drink 1 Selection -->
               <div id="duo-drink-1-wrapper" style="display: none; flex-direction: column; gap: 6px; margin-bottom: 4px; padding-left: 10px; border-left: 2px solid var(--red-primary);">
                 <span style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; color: var(--gold-accent);">Selecciona Bebida 1</span>
-                <select id="duo-drink-1-select" onchange="updateComboSummary()" style="width: 100%; padding: 10px; border-radius: 6px; border: 1.5px solid var(--red-primary); background: #1a1919; color: #ffffff; font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; outline: none;">
+                <select id="duo-drink-1-select" onchange="updateComboSummary()" class="premium-select">
                   <option value="Coca-Cola Zero (500ml)" selected>Coca-Cola Zero (500ml)</option>
                   <option value="Coca-Cola (500ml)">Coca-Cola (500ml)</option>
                   <option value="Fanta Naranja (500ml)">Fanta Naranja (500ml)</option>
@@ -4440,7 +4468,7 @@
               <!-- Drink 2 Selection -->
               <div id="duo-drink-2-wrapper" style="display: none; flex-direction: column; gap: 6px; padding-left: 10px; border-left: 2px solid var(--red-primary);">
                 <span style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; color: var(--gold-accent);">Selecciona Bebida 2</span>
-                <select id="duo-drink-2-select" onchange="updateComboSummary()" style="width: 100%; padding: 10px; border-radius: 6px; border: 1.5px solid var(--red-primary); background: #1a1919; color: #ffffff; font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; outline: none;">
+                <select id="duo-drink-2-select" onchange="updateComboSummary()" class="premium-select">
                   <option value="Coca-Cola Zero (500ml)">Coca-Cola Zero (500ml)</option>
                   <option value="Coca-Cola (500ml)" selected>Coca-Cola (500ml)</option>
                   <option value="Fanta Naranja (500ml)">Fanta Naranja (500ml)</option>
